@@ -1,5 +1,5 @@
 # cse210-student-template
-This is the starter code For Amanda Cole and all students in CSE 210.
+This is the starter code For Amanda Cole and all students in CSE 210 starting January 2023.
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
