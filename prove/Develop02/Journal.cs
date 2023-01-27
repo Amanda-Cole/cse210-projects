@@ -10,8 +10,9 @@ public class Journal
    public void AddPage()
    {
         string _prompt = _promptGen.PullRandomPrompt();
-        Console.WriteLine(_prompt);
         Console.WriteLine();
+        Console.WriteLine(_prompt);
+        Console.Write(">");
         string response = Console.ReadLine();
         string pageDate = DateTime.Now.ToShortDateString();
         Page page = new Page();
@@ -23,6 +24,7 @@ public class Journal
 
    public void Display(){
         foreach(Page p in _entries){
+            Console.WriteLine();
             p.DisplayGetFullEntry();
             Console.WriteLine();
         }

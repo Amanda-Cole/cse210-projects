@@ -16,7 +16,6 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Welcome to the Journal Program!");
             Console.WriteLine("Please select one of the following choices.");
-            
             Console.WriteLine("");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
@@ -41,7 +40,7 @@ class Program
             }
            
         }
-  
+        Console.WriteLine("Thanks for writing today!");
 
     }
 }

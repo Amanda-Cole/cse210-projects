@@ -11,6 +11,8 @@ public class Page
         // ALC write all to console.
 
         Console.WriteLine($"{_date}: {_promptQ}");
-        Console.WriteLine($"> {_response}");
+        Console.WriteLine($"> {_response}"
+                
+        );
     }
 }
