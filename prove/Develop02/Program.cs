@@ -22,6 +22,7 @@ class Program
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
             Console.WriteLine("5. Quit");
+            Console.WriteLine("6. Delete an Entry");
             Console.Write("What would you like to do? ");
             choice = int.Parse(Console.ReadLine());
 
@@ -37,6 +38,9 @@ class Program
             else if(choice == 4){
                 j.Save();
                 Console.WriteLine ("You saved your file");
+            }
+            else if(choice == 6){
+                j.Delete();
             }
            
         }

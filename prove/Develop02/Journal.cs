@@ -58,6 +58,27 @@ public class Journal
             }
         }   
    }
+
+   public void Delete(){
+       int deleteItem = -1;
+        Console.WriteLine ("What number entry do you want to delete? ");
+        deleteItem = int.Parse(Console.ReadLine());
+        int deleteIndex = deleteItem -1;
+        _entries.RemoveAt(deleteIndex);
+        Console.WriteLine($"You removed the number {deleteItem} journal entry from your journal.");
+
+   }
    
+    // Set a delete function that takes an entry by index and removes it from the saved file
+
+    
+
+
+
+
+
+
+
+
 }
 
