@@ -1,53 +1,75 @@
  using System;
 using System.IO;
+using System.Text;
 
- public class Scripture
-//  To call reference class for Ref, Call Word class for mzVerse (memorizing verse)
+public class Scripture
+//  Purpose to call reference class for Ref, Call Word class for mzVerse (memorizing verse)
 {
-   private List<string> verses = new List<string>();
-   verses "1 Nephi/1/9/10/ And it came to pass that he saw One descending out of the midst of heaven, and he beheld that his luster was above that of the sun at noon-day.% And he also saw twelve others following him, and their brightness did exceed that of the stars in the firmament.";
-
+   private List<Word> words = new List<Word>();
+   private Reference reference;
     
-   //private get_bookName
-        
-    public List<string> Verses { 
-        get {return verses;}
-        set {verses = value;}
+    public Scripture(){}
+    // Activate Scritpure Method
+
+    public Scripture(Reference reference, string fullText){
+// Method called in Program Class - meant to take _fullVerse, separate and send reference to Reference Class and store Strings
+        this.reference = reference;
+        foreach(string sw in fullText.Split(' ')){
+            Word word = new Word(sw);
+            words.Add(word);
+        }
     }
-
-    public Scripture(Reference reference, string text) {
-
+    public void HideRandomWords()
+    {
+        int wordsHidden = 0;
+        while(!IsCompletelyHidden() && wordsHidden < 3) {
+            var wordCount = words.Count();
+            Random r = new Random();
+            int rIndex = r.Next(0,wordCount);
+            Word word = words[rIndex];
+            if (word.IsShown())
+            {
+                word.HideWord();
+                wordsHidden++;
+            }
+        }
     }
-
+    public string GetRenderedText(bool showOriginalText)
+    {
+        StringBuilder scriptureText = new StringBuilder();
+        foreach(Word word in words)
+        {
+            scriptureText.Append(word.GetWordText(showOriginalText));
+            scriptureText.Append(" ");
+           
+        }
+        return scriptureText.ToString();
+    }
+    public bool IsCompletelyHidden()
+    {
+        bool IsCompletelyHidden = true;
+        foreach (Word word in words)
+        {
+            if (word.IsShown())
+            {
+                IsCompletelyHidden = false;
+            }
+        }
+        return IsCompletelyHidden;
+    }
+    public Reference Reference{
+        get{ return reference; }
+    }
+    public void DisplayHiddenScripture(){
+        HideRandomWords();
+    
+        string referenceText = reference.GetReferenceText();
+        string scriptureText = GetRenderedText(false);
+        Console.WriteLine($"{referenceText}: {scriptureText}");
+    }
+    public void DisplayFullScripture(){
+        string referenceText = reference.GetReferenceText();
+        string scriptureText = GetRenderedText(true);
+        Console.WriteLine($"{referenceText}: {scriptureText}");
+    }
 }
-
- 
- 
-//  class ScriptureReference{
-    
-//         private List<Verse> verses;
-//         private int wordsScrambled;
-
-//         public ScriptureReference(string scripture, char separator)
-//         {
-//             verses = scripture
-//                 .Split(',')
-//                 .Select(v => new Verse(v.Trim(), separator))
-//                 .ToList();
-
-//             wordsScrambled = 0;
-//         }
-
-//         public ScriptureReference(string scripture){
-//             : this(scripture, ' ')
-//         {
-//     }
-    //     public void PrintScrambledVerses()
-    //     {
-    //         wordsScrambled = 0;
-    //         foreach (var verse in verses)
-    //         {
-    //             Console.WriteLine(verse.Scramble(ref wordsScrambled));
-    //         }
-    //     }
-    // }

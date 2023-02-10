@@ -1,33 +1,35 @@
 using System;
 using System.IO;
 
-    
-    // class Verse
-    // {
-    //     private List<Word> words;
-
-    //     public Verse(string verse, char separator)
-    //     {
-    //         words = verse
-    //             .Split(separator)
-    //             .Select(w => new Word(w))
-    //             .ToList();
-    //     }
-
-// reference class to split _bookName, _chapter, _verseRef, and _endVerseRef
-
-
 public class Reference
 {
-    string _bookName = "";
-    string _chapter = "";
-    int _verseRef = 0;
-    int _endVerseRef =0;
+    private string _verse1;
+    private string _bookName;
+    private string _chapter;
+    private string _endverse;
+    public Reference(){}
 
-
-
-
-
-
-
+    public Reference(string bookName,string chapter, string verse1){
+// setter
+    _bookName = bookName;
+    _verse1 = verse1;
+    _chapter = chapter;
+    _endverse = "";
+    }
+    public Reference(string bookName, string chapter, string verse1, string endverse){
+        _bookName = bookName;
+        _verse1 = verse1;
+        _chapter = chapter;
+        _endverse = endverse;
+    }
+    public string GetReferenceText()
+    {
+        string refText = $"{_bookName} {_chapter}:{_verse1}";
+        if (_endverse.Length >0)
+        {
+            refText = refText + $"-{_endverse}";
+            //Console.Write($"{_endverse}");
+        }
+        return refText;
+    }
 }
