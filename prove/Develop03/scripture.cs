@@ -5,12 +5,10 @@ using System.Text;
 public class Scripture
 //  Purpose to call reference class for Ref, Call Word class for mzVerse (memorizing verse)
 {
-   private List<Word> words = new List<Word>();
-   private Reference reference;
-    
+    private List<Word> words = new List<Word>();
+    private Reference reference;
     public Scripture(){}
     // Activate Scritpure Method
-
     public Scripture(Reference reference, string fullText){
 // Method called in Program Class - meant to take _fullVerse, separate and send reference to Reference Class and store Strings
         this.reference = reference;
@@ -41,7 +39,6 @@ public class Scripture
         {
             scriptureText.Append(word.GetWordText(showOriginalText));
             scriptureText.Append(" ");
-           
         }
         return scriptureText.ToString();
     }
@@ -62,7 +59,6 @@ public class Scripture
     }
     public void DisplayHiddenScripture(){
         HideRandomWords();
-    
         string referenceText = reference.GetReferenceText();
         string scriptureText = GetRenderedText(false);
         Console.WriteLine($"{referenceText}: {scriptureText}");

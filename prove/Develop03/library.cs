@@ -34,7 +34,6 @@ public class Library
         if (choice == "PROVERBS"){
             _fullScripture = _Library [5];
         }
-
         return _fullScripture;
     }    
 }
