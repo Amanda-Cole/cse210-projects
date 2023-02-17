@@ -15,7 +15,5 @@ class Program
         WritingAssignment a3 = new WritingAssignment("London Cole", "WW2","Hitler Scary");
         Console.WriteLine(a3.GetSummary());
         Console.WriteLine(a3.GetWritingAssignment());
-
-
     }
 }

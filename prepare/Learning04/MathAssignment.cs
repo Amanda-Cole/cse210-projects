@@ -18,5 +18,4 @@ public class MathAssignment : Assignment
        {
         return _section + " and  " + _problem;
        }
-
 }

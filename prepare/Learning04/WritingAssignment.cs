@@ -10,16 +10,6 @@ class WritingAssignment : Assignment
 
     public string GetWritingAssignment()
     {
-        
         return _assignTitle + " by " + _studentName;
     }
-
-
-
-
-
-
-
-
-
 }
