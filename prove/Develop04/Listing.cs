@@ -25,11 +25,18 @@ public class Listing :Activity
         Console.WriteLine();
         Thread.Sleep(1500);
         Console.WriteLine("You may begin writing now.");
-        _answer = Console.ReadLine();
-        _listReceived.Add(_answer);
-       
 
-        Console.WriteLine("You Quit");
+        DateTime currentTime = DateTime.Now;
+        DateTime futureTime = currentTime.AddSeconds(Duration);
+
+        while (currentTime < futureTime)
+        {
+            _answer = Console.ReadLine();
+            _listReceived.Add(_answer);
+            currentTime = DateTime.Now;
+        }
+
+        //Console.WriteLine("You Quit");
         _countList = _listReceived.Count();
 
         Console.WriteLine($"You listed {_countList} items");
