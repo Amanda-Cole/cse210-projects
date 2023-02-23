@@ -1,16 +1,11 @@
 public class Reflection : Activity
 {
-    int _cycles=0;
-    // int duration = 0;
-    // string activityName = "";
+    private string _rPrompt;
     List<string> _libPrompt1 = new List<string>();
     List<string> _libFollowPrompt = new List<string>();
 
     public Reflection():base ("Reflecting Exercise", "This activity will help you reflect on  times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.")
     {
-        // duration = Duration;
-        // activityName = ActivityName;
-
         _libPrompt1.Add("Think of a time when you stood up for someone else");
         _libPrompt1.Add("Think of a time when you did something really difficult.");
         _libPrompt1.Add("Think of a time when you helped someone in need.");
@@ -26,33 +21,27 @@ public class Reflection : Activity
         _libFollowPrompt.Add("What did you learn about yourself through this experience?");
         _libFollowPrompt.Add("How can you keep this experience in mind in the future?");
     }
-
-    // get duration and provide countdown - new followprompt every 5 seconds until time is up
     public override void DisplayActivity(){
         base.DisplayActivity();
-        // spinner
         Console.WriteLine("Consider the following prompt: ");
         Console.WriteLine();
         Console.WriteLine($"----{GetRandomPrompt(_libPrompt1)}----");
         Console.WriteLine();
         Console.WriteLine("Press enter when ready to proceed.");
         Console.ReadLine();
-        Console.WriteLine(Duration);
-        // spinner or countdown
-        _cycles =(Duration -5) / 5;
 
-        while (_cycles!=0)
+        DateTime currentTime = DateTime.Now;
+        DateTime futureTime = currentTime.AddSeconds(Duration);
+
+        while (currentTime < futureTime)
         {
             Console.WriteLine();
-            Console.WriteLine (GetRandomPrompt(_libFollowPrompt)); 
-            Thread.Sleep (1500);
-            Spinner(3);
-            Thread.Sleep (1000);
-            _cycles--;
+            _rPrompt = GetRandomPrompt(_libFollowPrompt);
+            Console.WriteLine(_rPrompt);
+            _libFollowPrompt.Remove(_rPrompt);
+            Spinner(4);
+            currentTime = DateTime.Now;
         }
-        Console.WriteLine();
         DisplayEnd();
     }
-
-    
 }

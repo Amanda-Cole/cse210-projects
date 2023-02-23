@@ -27,7 +27,6 @@ public class Activity
 // constructor
     public Activity (string activityName, string activityDescription)
     {
-        // _duration = int.Parse(duration);
         _activityName = activityName;
         _activityDescription = activityDescription;
     }
@@ -37,38 +36,36 @@ public class Activity
         Console.Clear();
         Console.WriteLine( _startMessage + _activityName);
         Console.WriteLine();
-        Thread.Sleep(2000);
+        Spinner(3);
         Console.WriteLine(_activityDescription);
         Console.WriteLine();
-        Thread.Sleep(2000);
+        Spinner(3);
         Console.Write("How long, in seconds, would you like for your session?  ");
         _duration = int.Parse(Console.ReadLine());
-        Spinner(4);
-        Thread.Sleep(500);
+        Spinner(3);
         Console.WriteLine();
         Console.Write("You will begin in..... ");
         TimerDown(3);
         Console.Write("\b \b");
-        Console.WriteLine();
         Console.Clear();
     }
     public void DisplayEndMessage()
     {
+        Console.WriteLine();
         Console.WriteLine(_endMessage);
         Console.WriteLine();
         Console.WriteLine($"You completed {Duration} seconds of the {ActivityName}" ) ;
+        Spinner(3);
+        Thread.Sleep(3000);
+        Console.Clear();
     }
 
     public virtual void DisplayActivity(){
         DisplayWelcomeMessage();
     }
-
     public virtual void DisplayEnd(){
         DisplayEndMessage();
-        Spinner(5);
-        Console.Clear();
     }
-
     public void Spinner(int a)
     {
         int numb = 0;
@@ -95,8 +92,6 @@ public class Activity
             Console.Write(a);
             System.Threading.Thread.Sleep(1000);
             a--;
-            // need to clear number away from the count when done*********************************
-
         }
     }
     public void TimerUp(){
@@ -107,15 +102,11 @@ public class Activity
             Console.Write(a);
             System.Threading.Thread.Sleep(1000);
             a++;
-// need to clear number away from the count when done*********************************
         }
-
     }
     public string GetRandomPrompt(List<string> prompts){
         Random r = new Random();
         int index = r.Next(0, prompts.Count);
         return prompts[index];
     }
-
-
 }  

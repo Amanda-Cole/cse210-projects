@@ -8,8 +8,9 @@ class Program
         string _userInputChoice ="0" ;
         // string _duration = "";
 
-        while (_userInputChoice != "4"){
+        while (_userInputChoice != "5"){
 
+            Console.Clear();
             Console.WriteLine();
             Console.WriteLine("Welcome to the mindfulness program");
             Console.WriteLine();
@@ -18,13 +19,11 @@ class Program
             Console.WriteLine("1. Breathing");
             Console.WriteLine("2. Reflection");
             Console.WriteLine("3. Listing");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("4. Grounding");
+            Console.WriteLine("5. Quit");
 
             _userInputChoice = (Console.ReadLine());
             Console.WriteLine();
-            // Console.WriteLine("How long would you like to practice today? ");
-
-            // _duration = Console.ReadLine();
 
             Activity activity = null;
             if (_userInputChoice == "1")
@@ -39,6 +38,11 @@ class Program
             {
                 activity = new Listing();
             }
+            else if (_userInputChoice == "4")
+            {
+                activity = new Grounding();
+            }
+
             else{
                 Console.Clear();
             }

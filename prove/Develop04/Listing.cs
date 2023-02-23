@@ -1,13 +1,9 @@
 public class Listing :Activity
 {
-    // public string _listingPrompt="";
-    public int _countList = 0;
-    public string _answer="";
-
+    private int _countList = 0;
+    private string _answer="";
     List<string> _listReceived = new List<string>();
-
     List<string> _libListPrompts = new List<string>();
-
     public Listing():base("Listing Exercise","This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area."){
         _libListPrompts.Add("Who are people that you appreciate?");
         _libListPrompts.Add("What are personal strengths of yours?");
@@ -23,7 +19,6 @@ public class Listing :Activity
         Thread.Sleep(1500);
         Console.WriteLine($"You will have {Duration} seconds to list as many things as you can.");
         Console.WriteLine();
-        Thread.Sleep(1500);
         Console.WriteLine("You may begin writing now.");
 
         DateTime currentTime = DateTime.Now;
@@ -31,15 +26,16 @@ public class Listing :Activity
 
         while (currentTime < futureTime)
         {
+            Console.Write("<");
             _answer = Console.ReadLine();
             _listReceived.Add(_answer);
             currentTime = DateTime.Now;
         }
 
-        //Console.WriteLine("You Quit");
         _countList = _listReceived.Count();
-
+        Console.WriteLine();
         Console.WriteLine($"You listed {_countList} items");
 
+        DisplayEnd();
     }      
 }
