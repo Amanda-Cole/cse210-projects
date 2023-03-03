@@ -43,12 +43,14 @@ class Program
                 activity = new Grounding();
             }
 
-            else{
-                Console.Clear();
+            else if(_userInputChoice =="5")
+            {
+                Console.WriteLine("Have a great day");
+                
             }
 
             activity.DisplayActivity();
-            //Activity activity = new Activity(_duration);
+            // Activity activity = new Activity(_duration);
 
         }
     }
