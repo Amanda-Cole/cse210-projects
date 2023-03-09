@@ -1,14 +1,20 @@
-// public class EternalGoal:Goal
-// {
-//     public EternalGoal(string goalName,string goalDescription,int points):base(goalName,goalDescription,points)
-//     {}
+public class EternalGoal:Goal
+{
+    public EternalGoal(string goalName,string goalDescription,int points):base(goalName,goalDescription,points)
+    {}
 
-//     public override void GoalDetails()
-//     {
-//         base.GoalDetails();
-//         // add to library
-//     }
+    public override void DisplayGoal(string number)
+    {
+       Console.WriteLine(number + " Eternal");
+    }
 
+    public override void CompleteGoal()
+    {
+        Console.WriteLine("Eternal goal completed");
+    }
 
-
-// }
+    public override int GetCompletedPoints()
+    {
+        return base.GetCompletedPoints();
+    }
+}
