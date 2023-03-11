@@ -3,12 +3,10 @@ public abstract class Goal
     private string _goalName="";
     private string _goalDescription = "";
     private int _points=0;
-  
     private bool _isComplete=false;
 
-    // completed boolean?
+    private bool _isDeleted = false;
 
-    // getters
     protected string GoalName{
         get{
             return _goalName;
@@ -24,8 +22,7 @@ public abstract class Goal
             return _points;
         }
     }
-
-    protected bool IsComplete{
+    public bool IsComplete{
         get{
             return _isComplete;
         }
@@ -33,6 +30,16 @@ public abstract class Goal
             _isComplete = value;
         }
     }
+    public bool IsDeleted{
+        get{
+            return _isDeleted;
+        }
+        set{
+            _isDeleted = value;
+        }
+    }
+
+
 
     // constructor
     public Goal (string goalName, string goalDescription, int points)
@@ -41,11 +48,9 @@ public abstract class Goal
         _goalDescription = goalDescription;
         _points = points;
     }
-
     public abstract void CompleteGoal();
-
     public abstract void DisplayGoal(string number);
-
+    public abstract string GetSaveText();
     public virtual int GetCompletedPoints(){
         if(_isComplete){
             return _points;
@@ -54,33 +59,3 @@ public abstract class Goal
         }
     }
 }
-// abstract method to show display
-// // public virtual void DisplayGoal(string goalName, string goalDescription, int points)
-// // {
-// //    Console.WriteLine($"[ ] {goalName} ({goalDescription}) {points}");
-// // }
-
-// // public abstract string IsComplete();
-// }
-
-// CHAT GPT*************************************class Goal
-// {
-//     private string _name { get; set; }
-//     private string _description { get; set; }
-//     private int _points { get; set; }
-//     private bool IsComplete { get; set; }
-
-//     public Goal(string name, string description, int points)
-//     {
-//         _name = name;
-//         _description = description;
-//         _points = points;
-//         IsComplete = false;
-//     }
-
-//     public override string ToString()
-//     {
-//         string checkbox = IsComplete ? "[X]" : "[ ]";
-//         return $"{checkbox} {Name} ({Points} pts) - {Description}";
-//     }
-// }
