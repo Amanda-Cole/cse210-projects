@@ -39,8 +39,6 @@ public abstract class Goal
         }
     }
 
-
-
     // constructor
     public Goal (string goalName, string goalDescription, int points)
     {
